@@ -1,0 +1,32 @@
+.search_list__items {
+  padding: 1vh 1vw;
+  margin: 1vw;
+  font-size: 1rem;
+  border-style: none;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  border-bottom: 1px solid gray;
+  color: gray;
+}
+
+.main_category {
+  color: darkslategray;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.subcategory {
+  font-family: sans-serif;
+  margin-left: 4vw;
+  font-size: 1.2rem;
+  color: darkslategray;
+  font-weight: 700;
+}
+
+span {
+  margin-left: 1vw;
+  font-size: 0.9rem;
+  text-decoration: underline;
+  cursor: pointer;
+}
