@@ -3,25 +3,28 @@ import "./Category.css";
 import DisplayCategory from "../DisplayCategoryComp/DisplayCategory";
 
 const Category = () => {
-  const [categoryName, setCategoryName] = useState("");
-  const [numberOfPeople, setNumberOfPeople] = useState("");
-
-  const [categoryArray, setCategoryArray] = useState([]);
-  const [peopleArray, setPeopleArray] = useState([]);
+  const [categories, setCategories] = useState({
+    catgoryID: 0,
+    categoryName: "",
+    numberOfPeople: "",
+    ParentCategorId: 0,
+    items: [],
+  });
+  const [allCategories, setAllCategories] = useState([]);
 
   const [show, setShow] = useState(false);
   const itemChangeHandler = (e) => {
-    setCategoryName(e.target.value);
+    setCategories({ ...categories, categoryName: e.target.value });
   };
 
   const personsChangeHandler = (e) => {
-    setNumberOfPeople(e.target.value);
+    setCategories({ ...categories, numberOfPeople: e.target.value });
   };
 
   const keyDownHandler = (e) => {
     if (e.key === "Enter") {
-      setPeopleArray([...peopleArray, numberOfPeople]);
-      setCategoryArray([...categoryArray, categoryName]);
+      setAllCategories([...allCategories, categories]);
+      console.log(allCategories);
       setShow(true);
     }
   };
@@ -30,12 +33,7 @@ const Category = () => {
       <div className="header">
         <h1 className="header__title">Menu</h1>
         <div className="menupage">
-          {show && (
-            <DisplayCategory
-              categoryArray={categoryArray}
-              peopleArray={peopleArray}
-            />
-          )}
+          {show && <DisplayCategory allCategories={allCategories} />}
           <div className="menupage-list" onKeyDown={keyDownHandler}>
             <input
               type="text"
